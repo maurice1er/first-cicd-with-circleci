@@ -19,7 +19,6 @@ jobs:
     docker:
       - image: circleci/python@2.0.3
     steps:
-      - run: echo world
       - run:
           name: Run tests
           command: python --version # -m pytest
