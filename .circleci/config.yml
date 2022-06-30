@@ -22,7 +22,6 @@ jobs:
     environment:
       var1: My pull request is << pipeline.project.git_url >>.
     steps:
-      - run: echo CIRCLE_PR_NUMBER
       - run: echo $var1
 
   print_python_with_executor:
@@ -36,9 +35,6 @@ jobs:
     docker:
       - image: 70077007/alx_africa:latest
     steps:
-      - run:
-          name: Python version
-          command: python3 --version
       - run:
           name: Run container
           command: docker ps -a
