@@ -8,7 +8,7 @@ orbs:
   mynode: circleci/node@5.0.2
 # Orchestrate or schedule a set of jobs
 jobs:
-  print_hello:
+  print_node_without_executor:
     environment:
       var1: My pipeline id is << pipeline.id >> and my git branch is << pipeline.git.branch >>.
     docker:
@@ -17,7 +17,7 @@ jobs:
       - run: echo hello
       - run: echo $var1
 
-  print_with_node_executor:
+  print_node_with_executor:
     executor: mynode/default
     environment:
       var1: My pull request is << pipeline.project.git_url >>.
@@ -25,7 +25,7 @@ jobs:
       - run: echo CIRCLE_PR_NUMBER
       - run: echo $var1
 
-  print_with_python:
+  print_python_with_executor:
     executor: python/default
     steps:
       - run:
@@ -39,8 +39,8 @@ workflows:
     # Run the welcome/run job in its own container
     jobs:
       - welcome/run
-      - print_hello
-      - print_with_python:
+      - print_node_without_executor
+      - print_python_with_executor:
           requires:
-            - print_hello
-      - print_with_node_executor
+            - print_node_without_executor
+      - print_node_with_executor
