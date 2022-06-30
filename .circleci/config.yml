@@ -5,7 +5,7 @@ orbs:
   # Declare a dependency on the welcome-orb
   welcome: circleci/welcome-orb@0.4.1
   python: circleci/python@2.0.3
-  mynode: circleci/node@5.0.2
+  node: circleci/node@5.0.2
 # Orchestrate or schedule a set of jobs
 jobs:
   print_node_without_executor:
@@ -18,7 +18,7 @@ jobs:
       - run: echo $var1
 
   print_node_with_executor:
-    executor: mynode/default
+    executor: node/default
     environment:
       var1: My pull request is << pipeline.project.git_url >>.
     steps:
@@ -34,8 +34,14 @@ jobs:
 
   print_python_with_myperso_docker_image:
     docker:
-      - image: python:latest
+      - image: 70077007/alx_africa:latest
     steps:
+      - run:
+          name: Python version
+          command: python --version
+      - run:
+          name: Run container
+          command: docker ps -a
       - run:
           name: Run tests
           command: python --version # -m pytest
