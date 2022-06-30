@@ -32,6 +32,14 @@ jobs:
           name: Run tests
           command: python --version # -m pytest
 
+  print_python_with_myperso_docker_image:
+    docker:
+      - image: python:latest
+    steps:
+      - run:
+          name: Run tests
+          command: python --version # -m pytest
+
 
 workflows:
   # Name the workflow "welcome"
