@@ -15,9 +15,8 @@ jobs:
     steps:
       - run: echo hello
       - run: echo $var1
-  print_world:
-    docker:
-      - image: circleci/python@2.0.3
+  print_with_python:
+    executor: python/default
     steps:
       - run:
           name: Run tests
@@ -29,6 +28,6 @@ workflows:
     jobs:
       - welcome/run
       - print_hello
-      - print_world:
+      - print_with_python:
           requires:
             - print_hello
