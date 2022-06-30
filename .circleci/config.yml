@@ -31,6 +31,8 @@ jobs:
       - run:
           name: Run tests
           command: python --version # -m pytest
+
+
 workflows:
   # Name the workflow "welcome"
   welcome:
@@ -41,3 +43,4 @@ workflows:
       - print_with_python:
           requires:
             - print_hello
+      - print_with_node_executor
