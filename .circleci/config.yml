@@ -20,9 +20,9 @@ jobs:
   print_with_node_executor:
     executor: mynode/default
     environment:
-      var1: My pull request is << CIRCLE_PR_NUMBER >>.
+      var1: My pull request is << pipeline.project.git_url >>.
     steps:
-      # - run: echo hello
+      - run: echo $CIRCLE_PR_NUMBER
       - run: echo $var1
 
   print_with_python:
