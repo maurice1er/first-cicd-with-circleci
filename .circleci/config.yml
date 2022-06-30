@@ -35,11 +35,28 @@ jobs:
     docker:
       - image: 70077007/alx_africa:latest
     steps:
+      - run: echo ""
+      # - run:
+      #     name: Install Docker client
+      #     command: apk add docker-cli
+      # - run:
+      #     name: Run container
+      #     command: docker ps -a
+    
+  install_docker_cli:
+    docker:
+      - image: alpine:3.15
+    steps:
       - run:
-          name: Install Docker client
+          name: The First Step
+          command: |
+            echo 'Hello World!'
+            echo 'This is the delivery pipeline'
+      - run:
+          name: install docker client
           command: apk add docker-cli
       - run:
-          name: Run container
+          name: run docker
           command: docker ps -a
 
 
