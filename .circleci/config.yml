@@ -38,13 +38,10 @@ jobs:
     steps:
       - run:
           name: Python version
-          command: python --version
+          command: python3 --version
       - run:
           name: Run container
           command: docker ps -a
-      - run:
-          name: Run tests
-          command: python --version # -m pytest
 
 
 workflows:
