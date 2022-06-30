@@ -36,6 +36,9 @@ jobs:
       - image: 70077007/alx_africa:latest
     steps:
       - run:
+          name: Install Docker client
+          command: apk add docker-cli
+      - run:
           name: Run container
           command: docker ps -a
 
