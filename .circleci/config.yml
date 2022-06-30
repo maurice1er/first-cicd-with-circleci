@@ -22,7 +22,7 @@ jobs:
     environment:
       var1: My pull request is << pipeline.project.git_url >>.
     steps:
-      - run: echo $CIRCLE_PR_NUMBER
+      - run: echo CIRCLE_PR_NUMBER
       - run: echo $var1
 
   print_with_python:
