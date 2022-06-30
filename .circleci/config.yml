@@ -5,6 +5,7 @@ orbs:
   # Declare a dependency on the welcome-orb
   welcome: circleci/welcome-orb@0.4.1
   python: circleci/python@2.0.3
+  mynode: circleci/node@5.0.2
 # Orchestrate or schedule a set of jobs
 jobs:
   print_hello:
@@ -15,6 +16,15 @@ jobs:
     steps:
       - run: echo hello
       - run: echo $var1
+
+  print_with_node_executor:
+    executor: mynode/default
+    environment:
+      var1: My pull request is << CIRCLE_PR_NUMBER >>.
+    steps:
+      # - run: echo hello
+      - run: echo $var1
+
   print_with_python:
     executor: python/default
     steps:
