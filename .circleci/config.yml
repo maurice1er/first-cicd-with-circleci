@@ -72,6 +72,7 @@ workflows:
             - print_node_without_executor
       - print_node_with_executor
       - print_python_with_myperso_docker_image
+      - install_docker_cli
 
 
 
