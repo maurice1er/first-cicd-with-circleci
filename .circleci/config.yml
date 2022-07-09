@@ -10,7 +10,7 @@ jobs:
       - save_cache: 
           key: "npm-package"
           paths: /node_modules
-      - run: npm run lint
+      # - run: npm run lint
       - run:
           name: on error
           command: echo "compile Error!"
