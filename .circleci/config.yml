@@ -34,4 +34,4 @@ workflows:
       - checkout
       - run_cmd:
         requires:
-          - print_hello
+          - checkout
