@@ -15,15 +15,15 @@ jobs:
           name: on error
           command: echo "compile Error!"
           when: on_fail
-  test:
-    docker:
-      - image: circleci/node:13.8.0
-    steps:
-      - run: npm run test
-      - run:
-          name: on error
-          command: echo "test Error!"
-          when: on_fail
+  # test:
+  #   docker:
+  #     - image: circleci/node:13.8.0
+  #   steps:
+  #     - run: npm run test
+  #     - run:
+  #         name: on error
+  #         command: echo "test Error!"
+  #         when: on_fail
   analyse:
     docker:
       - image: circleci/node:13.8.0
@@ -38,9 +38,12 @@ workflows:
   my_workflow:
     jobs:
       - compile 
-      - test:
+      - analyse:
           requires: 
             - compile
-      - analyse:
-          requires:
-            - test
+      # - test:
+      #     requires: 
+      #       - compile
+      # - analyse:
+      #     requires:
+      #       - test
