@@ -9,7 +9,7 @@ jobs:
       - run: npm i
       - save_cache: 
           key: "npm-package"
-          paths: /node_modules
+          paths: /src/node_modules
       - run: npm run lint
       - run:
           name: on error
@@ -39,8 +39,8 @@ workflows:
     jobs:
       - Compile 
       - Test 
-        requires:
-          - Compile
+          requires:
+            - Compile
       - Analyse
-        requires:
-          - Test
+          requires:
+            - Test
