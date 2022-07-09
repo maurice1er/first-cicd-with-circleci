@@ -1,17 +1,42 @@
 version: 2.1
 
 jobs:
-  my_job:
+  Compile:
     docker:
       - image: circleci/node:13.8.0
     steps:
-      - run: exit 1
+      - chechout
+      - run: npm i
+      - save_cache: 
+          key: "npm-package"
+          paths: /node_modules
+      - run: npm lint
       - run:
           name: on error
-          command: echo "Hello Error!"
+          command: echo "compile Error!"
+          when: on_fail
+  Test:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - run: npm run test
+      - run:
+          name: on error
+          command: echo "test Error!"
+          when: on_fail
+  Analyse:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - run: npm audit
+      - run:
+          name: on error
+          command: echo "audit Error!"
           when: on_fail
 
 workflows:
   my_workflow:
     jobs:
-      - my_job
+      - Compile 
+      - Test 
+      - Analyse
