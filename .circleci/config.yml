@@ -38,9 +38,9 @@ workflows:
   my_workflow:
     jobs:
       - compile 
-      - test 
+      - test:
           requires: 
             - compile
-      - analyse
+      - analyse:
           requires:
             - test
