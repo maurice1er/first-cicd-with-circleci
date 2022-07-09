@@ -9,13 +9,13 @@ jobs:
       - run: npm i
       - save_cache: 
           key: "npm-package"
-          paths: /src/node_modules
+          paths: /node_modules
       - run: npm run lint
       - run:
           name: on error
           command: echo "compile Error!"
           when: on_fail
-  Test:
+  test:
     docker:
       - image: circleci/node:13.8.0
     steps:
@@ -24,7 +24,7 @@ jobs:
           name: on error
           command: echo "test Error!"
           when: on_fail
-  Analyse:
+  analyse:
     docker:
       - image: circleci/node:13.8.0
     steps:
@@ -37,10 +37,10 @@ jobs:
 workflows:
   my_workflow:
     jobs:
-      - Compile 
-      - Test 
+      - compile 
+      - test 
           requires: 
-            compile
-      - Analyse
+            - compile
+      - analyse
           requires:
-            - Test
+            - test
