@@ -1,7 +1,7 @@
 version: 2.1
 
 jobs:
-  Compile:
+  compile:
     docker:
       - image: circleci/node:13.8.0
     steps:
@@ -39,8 +39,8 @@ workflows:
     jobs:
       - Compile 
       - Test 
-          requires:
-            - Compile
+          requires: 
+            compile
       - Analyse
           requires:
             - Test
