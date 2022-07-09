@@ -6,13 +6,13 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - run: 
-        name: failed job
-        command: return 1 cmd 
-        shell: return 1
+          name: failed job
+          command: return 1 cmd 
+          shell: return 1
       - run:
-        name: job with when
-        command: echo Hello
-        when: on_fail
+          name: job with when
+          command: echo Hello
+          when: on_fail
 
 
 workflows:
