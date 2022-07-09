@@ -33,5 +33,5 @@ workflows:
     jobs:
       - checkout
       - run_cmd:
-        requires:
-          - checkout
+          requires:
+            - checkout
