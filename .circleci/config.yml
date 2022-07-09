@@ -1,17 +1,17 @@
 version: 2.1
 
 jobs:
-  run_cmd:
-    docker: 
+  my_job:
+    docker:
       - image: circleci/node:13.8.0
     steps:
+      - run: exit 1
       - run:
-          name: Testing application
-          command: eco "test.."
+          name: on error
+          command: echo "Hello Error!"
+          when: on_fail
 
 workflows:
-  # Name the workflow "welcome"
-  welcome:
-    # Run the welcome/run job in its own container
+  my_workflow:
     jobs:
-      - run_cmd
+      - my_job
